@@ -101,11 +101,17 @@ Press any key to continue . . . */
 #include <stdbool.h>
 
 bool cont = true;
-char again;
+char again, currentAccount;
 int selection;
 
 void newLine(void) {
 	printf("\n");
+}
+
+char makeCapital (char c) {
+	if (c > 90)
+		c -= 32;
+	return c;
 }
 
 // Displays the list of options available
@@ -131,7 +137,29 @@ void Keepgoing(char *goagain) {
 
 //Asks the user which type of account they would like to access and sets the 
 //value of the selection
-void AccountMenu( char *acctType);
+void AccountMenu( char *acctType) {
+	bool isValid = false;
+	char c;
+
+	while(!isValid) {
+		printf("Type of account\n");
+		printf("Choose C for Checking\n");
+		printf("Choose S for Savings\n");
+		printf("Choose R for Credit\n");
+		scanf("%c", &c);
+		getchar();
+
+		c = makeCapital(c);
+
+		if (c == 'C' || c == 'S' || c == 'R') {
+			isValid = true;
+			*acctType = c;
+		} else
+			printf("Invalid selection. Please choose again.\n");
+
+		newLine();
+	}
+}
 
 //Prompts the user for the amount of deposit and updates the selected account 
 void MakeDeposit( double *balance);
@@ -150,6 +178,7 @@ int main(void) {
 	while (cont) {
 
 		mainMenu(&selection);
+		AccountMenu(&currentAccount);
 
 		Keepgoing(&again);
 		if (again == 'n') {

@@ -5,28 +5,6 @@ You have been hired to write the software for MYBANK’s ATM network. Customers 
 	 
 You must have at least 6 user defined functions:
 
-// Displays the list of options available
-//prompts for the user’s selection and sets the value of the selection
-void mainMenu(int *option);
-
-//Asks the user if they want another transaction
-void Keepgoing(char *goagain);
-
-//Asks the user which type of account they would like to access and sets the 
-//value of the selection
-void AccountMenu( char *acctType);
-
-//Prompts the user for the amount of deposit and updates the selected account 
-void MakeDeposit( double *balance);
-
-//Prompts the user for the amount of the withdrawal, determines if there are 
-//sufficient funds and updates the selected account if funds are dispensed 
-void MakeWithdrawal( double *balance, char acctType);
-
-//Displays the user’s current account balance for the selected account
-void GetBalance( double balance);
-
-
 Additional Requirements:
 •	Create a typed algorithm that outlines the steps your program will follow in English/pseudocode. This is worth 10 points of the grade for this assignment.
 •	Use function prototypes.
@@ -47,18 +25,6 @@ o	Credit - $-1850.00
 
 Sample Output
 
-Welcome to MyBank
-
-Please choose from the following menu:
-DEPOSIT .......... 1
-WITHDRAWAL ....... 2
-ACCOUNT BALANCE... 3
-TRANSFER ......... 4
-Your selection: 4
- To transfer money, first withdraw from the specified account
-Then deposit that money into the receiving account
-
-Do you wish to make another selection? (y or n): y
 
 Please choose from the following menu:
 DEPOSIT .......... 1
@@ -130,3 +96,63 @@ You have 950.00 in your account
 
 Do you wish to make another selection? (y or n): n
 Press any key to continue . . . */
+
+#include <stdio.h>
+#include <stdbool.h>
+
+// Displays the list of options available
+//prompts for the user’s selection and sets the value of the selection
+void mainMenu(int *option);
+
+//Asks the user if they want another transaction
+void Keepgoing(char *goagain);
+
+//Asks the user which type of account they would like to access and sets the 
+//value of the selection
+void AccountMenu( char *acctType);
+
+//Prompts the user for the amount of deposit and updates the selected account 
+void MakeDeposit( double *balance);
+
+//Prompts the user for the amount of the withdrawal, determines if there are 
+//sufficient funds and updates the selected account if funds are dispensed 
+void MakeWithdrawal( double *balance, char acctType);
+
+//Displays the user’s current account balance for the selected account
+void GetBalance( double balance);
+
+int main(void) {
+	bool cont = true;
+	char c;
+
+	while (cont) {
+
+		printf("Do you wish to make another selection? (y or n): ");
+		scanf("%c", &c);
+
+		if (c == 'n') {
+			cont = false;
+		}
+	}
+
+	Welcome to MyBank
+
+Please choose from the following menu:
+DEPOSIT .......... 1
+WITHDRAWAL ....... 2
+ACCOUNT BALANCE... 3
+TRANSFER ......... 4
+Your selection: 4
+ To transfer money, first withdraw from the specified account
+Then deposit that money into the receiving account
+
+Do you wish to make another selection? (y or n): y
+
+}
+
+
+
+
+
+
+

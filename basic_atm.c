@@ -100,12 +100,34 @@ Press any key to continue . . . */
 #include <stdio.h>
 #include <stdbool.h>
 
+bool cont = true;
+char again;
+int selection;
+
+void newLine(void) {
+	printf("\n");
+}
+
 // Displays the list of options available
 //prompts for the user’s selection and sets the value of the selection
-void mainMenu(int *option);
+void mainMenu(int *option) {
+	printf("Please choose from the following menu:\n");
+	printf("DEPOSIT .......... 1\n");
+	printf("WITHDRAWAL ....... 2\n");
+	printf("ACCOUNT BALANCE... 3\n");
+	printf("TRANSFER ......... 4\n");
+	printf("Your selection: ");
+	scanf("%i", option);
+	getchar();
+	newLine();
+}
 
 //Asks the user if they want another transaction
-void Keepgoing(char *goagain);
+void Keepgoing(char *goagain) {
+	printf("Do you wish to make another selection? (y or n): ");
+	scanf("%c", goagain);
+	getchar();
+}
 
 //Asks the user which type of account they would like to access and sets the 
 //value of the selection
@@ -122,31 +144,23 @@ void MakeWithdrawal( double *balance, char acctType);
 void GetBalance( double balance);
 
 int main(void) {
-	bool cont = true;
-	char c;
+
+	printf("Welcome to MyBank\n\n");
 
 	while (cont) {
 
-		printf("Do you wish to make another selection? (y or n): ");
-		scanf("%c", &c);
+		mainMenu(&selection);
 
-		if (c == 'n') {
+		Keepgoing(&again);
+		if (again == 'n') {
 			cont = false;
 		}
+		newLine();
 	}
-
-	Welcome to MyBank
-
-Please choose from the following menu:
-DEPOSIT .......... 1
-WITHDRAWAL ....... 2
-ACCOUNT BALANCE... 3
-TRANSFER ......... 4
-Your selection: 4
+/*
  To transfer money, first withdraw from the specified account
 Then deposit that money into the receiving account
-
-Do you wish to make another selection? (y or n): y
+*/
 
 }
 

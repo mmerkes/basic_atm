@@ -117,15 +117,25 @@ char makeCapital (char c) {
 // Displays the list of options available
 //prompts for the user’s selection and sets the value of the selection
 void mainMenu(int *option) {
-	printf("Please choose from the following menu:\n");
-	printf("DEPOSIT .......... 1\n");
-	printf("WITHDRAWAL ....... 2\n");
-	printf("ACCOUNT BALANCE... 3\n");
-	printf("TRANSFER ......... 4\n");
-	printf("Your selection: ");
-	scanf("%i", option);
-	getchar();
-	newLine();
+	bool isValid = false;
+
+	while (!isValid) {
+		printf("Please choose from the following menu:\n");
+		printf("DEPOSIT .......... 1\n");
+		printf("WITHDRAWAL ....... 2\n");
+		printf("ACCOUNT BALANCE... 3\n");
+		printf("TRANSFER ......... 4\n");
+		printf("Your selection: ");
+		scanf("%i", option);
+		getchar();
+
+		if (*option >= 1 && *option <= 4)
+			isValid = true;
+		else
+			printf("Invalid entry. Choose again.\n");
+
+		newLine();
+	}
 }
 
 //Asks the user if they want another transaction
@@ -179,6 +189,20 @@ int main(void) {
 
 		mainMenu(&selection);
 		AccountMenu(&currentAccount);
+		switch (selection) {
+			case 1: //Deposit
+
+				break;
+			case 2: //withdrawal
+
+				break;
+			case 3: //Account balance
+
+				break;
+			case 4: //Transfer
+
+				break;
+		}
 
 		Keepgoing(&again);
 		if (again == 'n') {

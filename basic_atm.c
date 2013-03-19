@@ -104,6 +104,12 @@ bool cont = true;
 char again, currentAccount;
 int selection;
 
+struct balances {
+	float *savings;
+	float *checking;
+	float *credit;
+} user1;
+
 void newLine(void) {
 	printf("\n");
 }

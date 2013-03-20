@@ -105,10 +105,10 @@ char again, currentAccount;
 int selection;
 
 struct balances {
-	float *savings;
-	float *checking;
-	float *credit;
-} user1;
+	float savings;
+	float checking;
+	float credit;
+} user1, *user;
 
 void newLine(void) {
 	printf("\n");
@@ -190,6 +190,12 @@ void GetBalance( double balance);
 int main(void) {
 
 	printf("Welcome to MyBank\n\n");
+
+	user = &user1;
+
+	user->savings = 5000.0;
+	user->checking = 1300.0;
+	user->credit = 3000.0;
 
 	while (cont) {
 

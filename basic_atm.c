@@ -105,9 +105,9 @@ char again, currentAccount;
 int selection;
 
 struct balances {
-	float savings;
-	float checking;
-	float credit;
+	double savings;
+	double checking;
+	double credit;
 } user1, *user;
 
 void newLine(void) {
@@ -178,7 +178,14 @@ void AccountMenu( char *acctType) {
 }
 
 //Prompts the user for the amount of deposit and updates the selected account 
-void MakeDeposit( double *balance);
+void MakeDeposit( double *balance) {
+	float deposit;
+	printf("Please enter the amount of the deposit: ");
+	scanf("%f", &deposit);
+	getchar();
+
+	*balance += deposit;
+}
 
 //Prompts the user for the amount of the withdrawal, determines if there are 
 //sufficient funds and updates the selected account if funds are dispensed 
@@ -203,7 +210,8 @@ int main(void) {
 		AccountMenu(&currentAccount);
 		switch (selection) {
 			case 1: //Deposit
-
+				MakeDeposit(user->savings);
+				printf("%f\n", user->savings);
 				break;
 			case 2: //withdrawal
 

@@ -203,6 +203,7 @@ int main(void) {
 	user->savings = 5000.0;
 	user->checking = 1300.0;
 	user->credit = 3000.0;
+	double *acct = user->savings;
 
 	while (cont) {
 
@@ -210,8 +211,9 @@ int main(void) {
 		AccountMenu(&currentAccount);
 		switch (selection) {
 			case 1: //Deposit
-				MakeDeposit(user->savings);
-				printf("%f\n", user->savings);
+				
+				MakeDeposit(acct);
+				printf("%f\n", acct);
 				break;
 			case 2: //withdrawal
 

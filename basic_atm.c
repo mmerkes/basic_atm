@@ -192,7 +192,9 @@ void MakeDeposit( double *balance) {
 void MakeWithdrawal( double *balance, char acctType);
 
 //Displays the user’s current account balance for the selected account
-void GetBalance( double balance);
+void GetBalance( double balance) {
+	printf("You have $%.2f in your account.\n");
+}
 
 int main(void) {
 
@@ -203,7 +205,7 @@ int main(void) {
 	user->savings = 5000.0;
 	user->checking = 1300.0;
 	user->credit = 3000.0;
-	double *acct = user->savings;
+	double acct = user->savings;
 
 	while (cont) {
 
@@ -211,9 +213,8 @@ int main(void) {
 		AccountMenu(&currentAccount);
 		switch (selection) {
 			case 1: //Deposit
-				
-				MakeDeposit(acct);
-				printf("%f\n", acct);
+				MakeDeposit(&acct);
+				GetBalance(acct);
 				break;
 			case 2: //withdrawal
 

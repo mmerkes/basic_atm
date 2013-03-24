@@ -189,7 +189,14 @@ void MakeDeposit( double *balance) {
 
 //Prompts the user for the amount of the withdrawal, determines if there are 
 //sufficient funds and updates the selected account if funds are dispensed 
-void MakeWithdrawal( double *balance, char acctType);
+void MakeWithdrawal( double *balance, char acctType) {
+	float withdrawal;
+	printf("Please enter the amount you'd like to withdraw: ");
+	scanf("%f", &withdrawal);
+	getchar();
+
+	if ()
+}
 
 //Displays the user’s current account balance for the selected account
 void GetBalance( double balance) {
